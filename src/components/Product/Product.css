@@ -1,0 +1,11 @@
+.custom-card{
+    margin-right: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+}
+
+.card-bottom{
+    margin-top: 20px;
+}

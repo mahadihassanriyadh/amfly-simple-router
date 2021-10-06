@@ -1,0 +1,36 @@
+.header-section-one{
+    background-color: #4D148C;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.logo{
+    background-color: #4D148C;
+    width: 250px;
+}
+
+.header-section-two{
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar a{
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px 8px;
+}
+
+.navbar a:hover{
+    background-color: #000000;
+    color: white;
+}
+
+.cart-icon img{
+    width: 40px;
+}
