@@ -12,6 +12,7 @@ const ReviewItem = (props) => {
                     <h4>{name}</h4>
                     <p>Price: {price}</p>
                     <p>Quantity: {quantity}</p>
+                    <button onClick={()=> props.handleAddOneMore(key)} className="btn btn-warning me-3">Add One More</button>
                     <button onClick={()=> props.handleRemove(key)} className="btn btn-danger">Remove Item</button>
                 </div>
             </div>
