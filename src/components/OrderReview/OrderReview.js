@@ -1,19 +1,20 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import { useCart } from '../../hooks/useCart';
 import { useProducts } from '../../hooks/useProducts';
-import { addToDb, removeFromDb } from '../../utilities/localStorage';
+import { addToDb, clearTheCart, removeFromDb } from '../../utilities/localStorage';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
 const OrderReview = () => {
-    const [products, setProducts] = useProducts();
+    const [products] = useProducts();
     const [cart, setCart] = useCart(products);
     const handleRemove = key => {
         const newCart = cart.filter(product => product.key !== key);
         removeFromDb(key);
         setCart(newCart);
     }
-
+    const history = useHistory();
     const handleAddOneMore = key => {
         console.log(key)
         const newCart = [...cart];
@@ -26,6 +27,12 @@ const OrderReview = () => {
             }
         }
         addToDb(key);
+    }
+
+    const handlePLaceOrder = () => {
+        history.push('/placeOrder');
+        setCart([]);
+        clearTheCart();
     }
     return (
         <div className="container">
@@ -41,7 +48,12 @@ const OrderReview = () => {
                     }
                 </div>
                 <div className="col-lg-3">
-                    <Cart cart={cart}></Cart>
+                    <div>
+                        <h2>Your Orders</h2>
+                    </div>
+                    <Cart cart={cart}>
+                        <button onClick={handlePLaceOrder} className="btn btn-warning">Place Order</button>
+                    </Cart>
                 </div>
             </div>
         </div>

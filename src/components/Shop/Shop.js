@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 import { addToDb, getDb } from '../../utilities/localStorage';
 import Cart from '../Cart/Cart';
@@ -43,6 +44,8 @@ const Shop = () => {
             const newCart = [...cart, product];
             setCart(newCart);
         }
+
+        // save to local storage for now
         addToDb(product.key);
     }
 
@@ -62,7 +65,11 @@ const Shop = () => {
                 </div>
 
                 <div className="col-12 col-md-6 col-lg-3">
-                    <Cart cart={cart}></Cart>
+                    <Cart cart={cart}>
+                        <Link to="/orderReview">
+                            <button className="btn btn-success">Review Your Order</button>
+                        </Link>
+                    </Cart>
                 </div>
             </div>
         </div>

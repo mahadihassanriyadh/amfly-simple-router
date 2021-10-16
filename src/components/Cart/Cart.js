@@ -3,7 +3,7 @@ import './Cart.css'
 
 const Cart = (props) => {
     const { cart } = props;
-    // console.log(cart);
+    // console.log(props);
     let total = 0;
     let productQuantity = 0;
     for (const product of cart) {
@@ -22,6 +22,7 @@ const Cart = (props) => {
             <p>Tax: {tax.toFixed(2)}</p>
             <p>Shipping Cost: {shippingCost}</p>
             <h5>Grand Total: {grandTotal.toFixed(2)}</h5>
+            {props.children}
         </div>
     );
 };
