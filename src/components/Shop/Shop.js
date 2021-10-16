@@ -18,33 +18,21 @@ const Shop = () => {
     
     const handleAddToCartBtn = product => {
         // product.quantity = 1;
-        const newCart = [...cart];
-        const foundMatch = cart.find(p => p.key == product.key)
-        if (foundMatch) {
-            for (const item of newCart) {
-                if (product.key === item.key) {
-                    console.log('first');
-                    item.quantity += 1;
-                    setCart(newCart);
-                    break;
-                }
-            }
+        let newCart = [];
+        const exists = cart.find(p => p.key == product.key)
+        if (exists) {
+            // by rest I am refering to the rest of the products in the cart without the specific product
+            const rest = cart.filter(p => p.key !== product.key);
+            exists.quantity = exists.quantity + 1;
+            newCart = [...rest, product]
         }
         else {
-            product.quantity = product.quantity ? product.quantity : 0;
-            product.quantity += 1;
-
-            const newCart = [...cart, product];
-            setCart(newCart);
+            product.quantity = 1;
+            newCart = [...cart, product]
         }
         
-        if (cart.length === 0) {
-            console.log('last');
-            product.quantity = 1;
-            const newCart = [...cart, product];
-            setCart(newCart);
-        }
-
+        // changing in UI
+        setCart(newCart);
         // save to local storage for now
         addToDb(product.key);
     }
