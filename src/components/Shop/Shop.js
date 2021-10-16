@@ -18,6 +18,7 @@ const Shop = () => {
     
     const handleAddToCartBtn = product => {
         // product.quantity = 1;
+        // console.log(product)
         let newCart = [];
         const exists = cart.find(p => p.key == product.key)
         if (exists) {
